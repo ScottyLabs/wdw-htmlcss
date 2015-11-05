@@ -1,0 +1,59 @@
+/* WDW CSS Template - Nov. 2015
+ *
+ * I recommend putting everything inside of a "container" div so that you site
+ *   will scale well on mobile/tablet devices.
+ *
+ * Also, it's a good idea to change the font, set some global style
+ *   properties for everything in your body, and maybe some fancy
+ *   headers.
+ *
+ * License: IDGAF, use it for whatever you want
+ */
+
+
+/* Add Google's Roboto Font */
+@import url(https://fonts.googleapis.com/css?family=Roboto:300,500);
+
+/* This sets the default font family to Roboto everywhere, with a 
+ * "light" weight of 300, which looks nice and modern. */
+body { 
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    color: #5E5E5E;
+}
+
+/* For major section titles, black will stand out more. */
+h1, h2 {
+    color: #000000;
+}
+/* Make all headers bold to stand out from the body */
+h1, h2, h3, h4, h5, h6 { 
+    font-weight: 500;
+}
+
+/* Utility class to break your page into logical secitons */
+.section {
+    width: 100%;
+    display: inline-block;
+    margin-bottom: 0.5em;
+    padding: 1em;
+}
+
+/* Wrap all content in a container div to give some mobile responsiveness */
+.container {
+    width: 60%;
+    margin: auto;
+}
+@media (max-width: 900px) {
+    .container {
+        width: 80%;
+    }
+}
+@media (max-width: 600px) {
+    h1, h2, h3, h4, h5, h6 {
+
+    }
+    .container {
+        width: 95%;
+    }
+}
