@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>WDW HTML+CSS</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/0.0.1/prism.css" rel="stylesheet"/>
+    <link href="style.css" rel="stylesheet"/>
+</head>
+<body>
+    <nav>
+        <img class="logo" src="https://scottylabs.org/wdw/assets/img/logo.svg"/>
+        <h4>HTML+CSS Examples</h4>
+        <select id="ex-select" name="filename" onchange="pickedFile()">
+            <optgroup label="HTML">
+                <option value="div">div elements</option>
+                <option value="headers">Headers</option>
+                <option value="p">Paragraphs</option>
+                <option value="em">Bold/Italics</option>
+                <option value="a">Links + Email</option>
+                <option value="ul">Lists</option>
+                <option value="table">HTML Table</option>
+                <option value="im">Images</option>
+            </optgroup>
+            <optgroup label="CSS">
+                <option value="CSS_fonts">Pretty Fonts</option>
+            </optgroup>
+        </select>
+    </nav>
+    
+    <pre>
+    <code id="source-view" class="language-markup">
+    </code>
+    </pre>
+    <iframe id="html-view" src="HTML_steps/div.html" frameborder="1"></iframe>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/0.0.1/prism.js"></script>
+    <script type="text/javascript">
+        function pickedFile() {
+            var filename = document.getElementById('ex-select').value;
+            location.assign(location.href.split('?')[0] + "?filename=" + filename);
+        }
+        
+        function get(name){
+           if(name=(new RegExp('[?&]'+encodeURIComponent(name)+'=([^&]*)')).exec(location.search))
+              return decodeURIComponent(name[1]);
+        }
+        function readTextFile(file)
+        {
+            var allText = null;
+            var rawFile = new XMLHttpRequest();
+            rawFile.open("GET", file, false);
+            rawFile.onreadystatechange = function ()
+            {
+                if(rawFile.readyState === 4)
+                {
+                    if(rawFile.status === 200 || rawFile.status == 0)
+                    {
+                        allText = rawFile.responseText;
+                    }
+                }
+            }
+            rawFile.send(null);
+            return allText;
+        }
+        
+        var filename = get('filename');
+        if (filename == null) {
+            filename = 'div';
+        }
+        var fileSelect = document.getElementById('ex-select');
+        var selectedIndex = 0;
+        for (var i=0; i < fileSelect.options.length; i += 1) {
+            if (fileSelect.options[i].value == filename) {
+                selectedIndex = i;
+            }
+        } 
+        fileSelect.options.selectedIndex = selectedIndex;
+        var fullFilePath = "HTML_steps/" + filename + ".html";
+        document.getElementById('source-view').textContent = readTextFile(fullFilePath);
+        document.getElementById('html-view').src = fullFilePath;
+    </script>
+</body>
+</html>
