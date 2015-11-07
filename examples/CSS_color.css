@@ -1,0 +1,32 @@
+/* Add Google's Roboto Font */
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,500);
+@import url(https://fonts.googleapis.com/css?family=Montserrat);
+
+body {
+    /* This sets the default font family to Roboto everywhere */
+    font-family: 'Roboto', sans-serif;
+    background-color: #3498DB;
+}
+
+h1, h2, h3, h4, h5, h6, strong {
+    /* This overrides the default setting for the 'body' tag with 
+     * a special font for our headers */
+    font-family: 'Montserrat', sans-serif;
+    color: #3498DB;
+}
+
+.container {
+    width: 60%;
+    margin: auto; /* Centers container in browser */
+}
+
+.section {
+    width: 100%;
+    margin-bottom: 1.5em;
+    padding: 1em;
+    background-color: #FFFFFF;
+}
+
+#about-me img {
+    width: 250px;
+}
