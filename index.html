@@ -22,6 +22,12 @@
             </optgroup>
             <optgroup label="CSS">
                 <option value="CSS_fonts">Pretty Fonts</option>
+                <option value="CSS_classes">Classes</option>
+                <option value="CSS_layout">Layout/box</option>
+                <option value="CSS_color">Color</option>
+                <option value="CSS_shadow">Shadow</option>
+                <option value="CSS_float">Floating</option>
+                <option value="CSS_media">Media Queries</option>
             </optgroup>
         </select>
     </nav>
@@ -73,9 +79,16 @@
             }
         } 
         fileSelect.options.selectedIndex = selectedIndex;
-        var fullFilePath = "HTML_steps/" + filename + ".html";
-        document.getElementById('source-view').textContent = readTextFile(fullFilePath);
-        document.getElementById('html-view').src = fullFilePath;
+        var codeFilePath = "examples/" + filename;
+        var htmlFilePath = "examples/" + filename;
+        if (filename.substring(0, 3) == "CSS") {
+            codeFilePath += ".css";
+        } else {
+            codeFilePath += ".html";
+        }
+
+        document.getElementById('source-view').textContent = readTextFile(codeFilePath);
+        document.getElementById('html-view').src = htmlFilePath;
     </script>
 </body>
 </html>

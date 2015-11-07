@@ -5,43 +5,44 @@
 body {
     /* This sets the default font family to Roboto everywhere */
     font-family: 'Roboto', sans-serif;
-    background-color: #E3E4E5;/* #013440; */
+    background-color: #3498DB;
 }
+
 h1, h2, h3, h4, h5, h6, strong {
     /* This overrides the default setting for the 'body' tag with 
      * a special font for our headers */
     font-family: 'Montserrat', sans-serif;
-    color: #666;/*#046380; */
+    color: #3498DB;
 }
 
 .container {
     width: 60%;
-    margin: auto;
+    margin: auto; /* Centers container in browser */
+}
+
+.section {
+    width: 100%;
+    margin-bottom: 1.5em;
+    padding: 1em;
+    background-color: #FFFFFF;
+    box-shadow: 8px 8px 8px #444444;
 }
 
 #about-me {
     height: 200px;
 }
-#about-me .content {
+
+#about-me > div {
     height: 100%;
     width: 50%;
     float: left;
 }
-#about-me .content img {
+
+#about-me > div img {
     height: 100%;
     float: right;
     padding-right: 10%;
 }
-
-.section {
-    display: inline-block;
-    margin-bottom: 0.5em;
-    padding: 1em;
-    background-color: white;
-    width: 100%;
-    box-shadow: 5px 5px 5px #888888;
-}
-
 
 
 
@@ -62,21 +63,26 @@ h1, h2, h3, h4, h5, h6, strong {
 @media (max-width: 600px) {
     body {
         text-align: center;
+        margin-right: 0;
+        margin-left: 0;
     }
     .container {
-        width: 95%;
-        margin: auto;
+        width: auto;
+        margin: 0;
+    }
+    .section {
+        box-shadow: 0px 8px 8px #444444;
     }
     #about-me {
         height: 300px;
     }
-    #about-me .content {
+    #about-me > div {
         width: 100%;
         height: 50%;
         float: left;
         text-align: center;
     }
-    #about-me .content img {
+    #about-me > div img {
         float: none;
         padding-right: 0;
     }

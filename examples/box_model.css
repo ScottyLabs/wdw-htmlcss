@@ -1,0 +1,29 @@
+/* For demo of CSS box model in WDW HTML+CSS Workshop */
+
+.row {
+    width: 100%;
+}
+
+.box {
+    width: 250px;
+    height: 250px;
+    display: inline-flex;
+    border-color: #000000;
+}
+.box > .box {
+    width:
+}
+
+.red {
+    background-color: #E74C3C;
+}
+
+.blue {
+    background-color: #3498DB;
+}
+
+.green {
+    background-color: #099A4D;
+}
+
+
