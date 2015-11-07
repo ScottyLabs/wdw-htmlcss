@@ -83,8 +83,10 @@
         var htmlFilePath = "examples/" + filename;
         if (filename.substring(0, 3) == "CSS") {
             codeFilePath += ".css";
+            document.getElementById("source-view").className = "language-css";
         } else {
             codeFilePath += ".html";
+            document.getElementById("source-view").className = "language-markup";
         }
 
         document.getElementById('source-view').textContent = readTextFile(codeFilePath);
