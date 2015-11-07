@@ -48,6 +48,11 @@ nav select {
     margin-left: 20px;
 }
 
-pre[class*='language-'] > code[data-language] {
+
+pre[class*='language-'] {
+    margin: 0;
+}
+pre[class*="language-"] > code[data-language] {
 	max-height: none;
 }
+
