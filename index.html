@@ -2,42 +2,61 @@
 <html>
 <head>
     <title>WDW HTML+CSS</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/0.0.1/prism.css" rel="stylesheet"/>
+	<!--Import Google Icon Font-->
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="./materialize/css/materialize.css"  media="screen,projection"/>
+    <link href="prism.css" rel="stylesheet"/>
     <link href="style.css" rel="stylesheet"/>
 </head>
 <body>
     <nav>
-        <img class="logo" src="https://scottylabs.org/wdw/assets/img/logo.svg"/>
-        <h4>HTML+CSS Examples</h4>
-        <select id="ex-select" name="filename" onchange="pickedFile()">
-            <optgroup label="HTML">
-                <option value="div">div elements</option>
-                <option value="headers">Headers</option>
-                <option value="p">Paragraphs</option>
-                <option value="em">Bold/Italics</option>
-                <option value="a">Links + Email</option>
-                <option value="ul">Lists</option>
-                <option value="table">HTML Table</option>
-                <option value="im">Images</option>
-            </optgroup>
-            <optgroup label="CSS">
-                <option value="CSS_fonts">Pretty Fonts</option>
-                <option value="CSS_classes">Classes</option>
-                <option value="CSS_layout">Layout/box</option>
-                <option value="CSS_color">Color</option>
-                <option value="CSS_shadow">Shadow</option>
-                <option value="CSS_float">Floating</option>
-                <option value="CSS_media">Media Queries</option>
-            </optgroup>
-        </select>
+		<div class="nav-wrapper container">
+			<img class="logo" src="https://scottylabs.org/wdw/assets/img/logo.svg"/>
+			<h4>HTML+CSS Examples</h4>
+			<select id="ex-select" name="filename" onchange="pickedFile()">
+				<optgroup label="HTML">
+					<option value="div">div elements</option>
+					<option value="headers">Headers</option>
+					<option value="p">Paragraphs</option>
+					<option value="em">Bold/Italics</option>
+					<option value="a">Links + Email</option>
+					<option value="ul">Lists</option>
+					<option value="table">HTML Table</option>
+					<option value="im">Images</option>
+				</optgroup>
+				<optgroup label="CSS">
+					<option value="CSS_fonts">Pretty Fonts</option>
+					<option value="CSS_classes">Classes</option>
+					<option value="CSS_layout">Layout/box</option>
+					<option value="CSS_color">Color</option>
+					<option value="CSS_shadow">Shadow</option>
+					<option value="CSS_float">Floating</option>
+					<option value="CSS_media">Media Queries</option>
+				</optgroup>
+			</select>
+		</div>
     </nav>
     
-    <pre>
-    <code id="source-view" class="language-markup">
-    </code>
-    </pre>
-    <iframe id="html-view" src="HTML_steps/div.html" frameborder="1"></iframe>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/0.0.1/prism.js"></script>
+	<div class="col s12" id="tabdiv"><ul class="tabs">
+		<li class="tab col s3"><a class="active language-markup" href="#html-tab">HTML</a></li>
+		<li class="tab col s3"><a class="language-css" href="#css-tab">CSS</a></li>
+	</ul></div>
+	
+	<div id="html-tab" class="col s12 codediv">
+		<div><code id="source-view-html" class="language-markup"></code></div>
+	</div>
+	
+	<div id="css-tab" class="col s12 codediv">
+		<div><code id="source-view-css" class="language-css"></code></div>
+	</div>
+	
+	<div id="iframediv">
+		<iframe id="html-view" src="HTML_steps/div.html" frameborder="1"></iframe>
+	<div>
+	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="./materialize/js/materialize.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/0.0.1/prism.js"></script>
     <script type="text/javascript">
         function pickedFile() {
             var filename = document.getElementById('ex-select').value;
@@ -81,16 +100,23 @@
         fileSelect.options.selectedIndex = selectedIndex;
         var codeFilePath = "examples/" + filename;
         var htmlFilePath = "examples/" + filename;
-        if (filename.substring(0, 3) == "CSS") {
+        /*if (filename.substring(0, 3) == "CSS") {
             codeFilePath += ".css";
-            document.getElementById("source-view").className = "language-css";
+			document.getElementById('source-view-css').textContent = readTextFile(codeFilePath);
         } else {
             codeFilePath += ".html";
-            document.getElementById("source-view").className = "language-markup";
+			document.getElementById('source-view-html').textContent = readTextFile(codeFilePath);
+        }*/
+		if (filename.substring(0, 3) == "CSS") {
+            $(document).ready(function(){
+				$('ul.tabs').tabs('select_tab', 'css-tab');
+			});
         }
-
-        document.getElementById('source-view').textContent = readTextFile(codeFilePath);
-        document.getElementById('html-view').src = htmlFilePath;
+		document.getElementById('source-view-css').textContent = readTextFile(codeFilePath+".css");
+		document.getElementById('source-view-html').textContent = readTextFile(codeFilePath+".html");
+        
+        document.getElementById('html-view').src = "./"+htmlFilePath+".html";
     </script>
+	<link href="./materialize/js/materialize.min.js" />
 </body>
 </html>
